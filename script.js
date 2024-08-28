@@ -36,7 +36,6 @@ fetch('/api/questions')
                 formHtml += '<button type="submit">ประเมินผล</button>';
                 $('#assessment-form').html(formHtml);
             });
-    }
 
     function handleSubmit(event) {
         event.preventDefault();
