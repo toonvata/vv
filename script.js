@@ -3,7 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#assessment-form').html('<p>กำลังโหลดแบบสอบถาม...</p>');
         
         fetch('/api/questions')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 let formHtml = '';
                 for (let category in data.questions) {
