@@ -1,17 +1,21 @@
 $(document).ready(function() {
     // Fetch questions and populate form
-    $.getJSON('/api/questions', function(data) {
-        let formHtml = '';
-        for (let category in data.questions) {
-            formHtml += `<div class="question"><h3>${category}</h3>`;
-            for (let element in data.questions[category]) {
-                formHtml += `<label>
-                    <input type="radio" name="answers[${category}]" value="${element}" required>
-                    ${data.questions[category][element]}
-                </label>`;
+     $.ajax({
+        url: '/api/questions',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            let formHtml = '';
+            for (let category in data.questions) {
+                formHtml += `<div class="question"><h3>${category}</h3>`;
+                for (let element in data.questions[category]) {
+                    formHtml += `<label>
+                        <input type="radio" name="answers[${category}]" value="${element}" required>
+                        ${data.questions[category][element]}
+                    </label>`;
+                }
+                formHtml += '</div>';
             }
-            formHtml += '</div>';
-        }
         
         formHtml += '<h3>อาการทางคลินิก</h3>';
         for (let element in data.clinical_symptoms) {
