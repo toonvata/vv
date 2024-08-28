@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     function loadQuestions() {
         $('#assessment-form').html('<p>กำลังโหลดแบบสอบถาม...</p>');
-        
+        console.log('Fetching questions from /api/questions');
         fetch('/api/questions')
             .then(response => {
                 if (!response.ok) {
