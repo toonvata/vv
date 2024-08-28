@@ -1,5 +1,6 @@
 class ThaiElementAssessment {
     constructor() {
+        console.log('ThaiElementAssessment constructor called');
         this.questions = {
             "รสชาติอาหารที่ชอบ": {
         "ปิตตะ": "ชอบกินของร้อนๆ เผ็ด เปรี้ยว รสจัด อาหารเผ็ด(เครื่องเทศ เครื่องแกง)",
@@ -89,10 +90,12 @@ class ThaiElementAssessment {
     }
 
     getQuestions() {
+         console.log('getQuestions called');
         return this.questions;
     }
 
     getClinicalSymptoms() {
+        console.log('getClinicalSymptoms called');
         return this.clinical_symptoms;
     }
 
