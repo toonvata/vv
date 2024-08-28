@@ -1,15 +1,18 @@
-document.addEventListener('DOMContentLoaded', function() {
+ocument.addEventListener('DOMContentLoaded', function() {
     function loadQuestions() {
+        console.log('Attempting to load questions...');
         $('#assessment-form').html('<p>กำลังโหลดแบบสอบถาม...</p>');
         
-        fetch('https://vv-nine.vercel.app/api/questions')
+        fetch('/api/questions')
             .then(response => {
+                console.log('API Response:', response);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log('Received data:', data);
                 let formHtml = '';
                 for (let category in data.questions) {
                     formHtml += `<div class="question"><h3>${category}</h3>`;
