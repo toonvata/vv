@@ -1,6 +1,8 @@
 $(document).ready(function() {
+    $('#assessment-form').html('<p>กำลังโหลดแบบสอบถาม...</p>');
+    
     // Fetch questions and populate form
-     $.ajax({
+    $.ajax({
         url: '/api/questions',
         method: 'GET',
         dataType: 'json',
@@ -16,20 +18,25 @@ $(document).ready(function() {
                 }
                 formHtml += '</div>';
             }
-        
-        formHtml += '<h3>อาการทางคลินิก</h3>';
-        for (let element in data.clinical_symptoms) {
-            formHtml += `<h4>${element}</h4>`;
-            data.clinical_symptoms[element].forEach(function(symptom) {
-                formHtml += `<label>
-                    <input type="checkbox" name="symptoms[]" value="${symptom}">
-                    ${symptom}
-                </label>`;
-            });
+            
+            formHtml += '<h3>อาการทางคลินิก</h3>';
+            for (let element in data.clinical_symptoms) {
+                formHtml += `<h4>${element}</h4>`;
+                data.clinical_symptoms[element].forEach(function(symptom) {
+                    formHtml += `<label>
+                        <input type="checkbox" name="symptoms[]" value="${symptom}">
+                        ${symptom}
+                    </label>`;
+                });
+            }
+            
+            formHtml += '<button type="submit">ประเมินผล</button>';
+            $('#assessment-form').html(formHtml);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $('#assessment-form').html('<p>เกิดข้อผิดพลาดในการโหลดแบบสอบถาม: ' + textStatus + ' - ' + errorThrown + '</p>');
+            console.error('Error loading questions:', jqXHR, textStatus, errorThrown);
         }
-        
-        formHtml += '<button type="submit">ประเมินผล</button>';
-        $('#assessment-form').html(formHtml);
     });
 
     // Handle form submission
