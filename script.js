@@ -3,12 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#assessment-form').html('<p>กำลังโหลดแบบสอบถาม...</p>');
         
         fetch('/api/questions')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 let formHtml = '';
                 for (let category in data.questions) {
@@ -35,10 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 formHtml += '<button type="submit">ประเมินผล</button>';
                 $('#assessment-form').html(formHtml);
-            })
-            .catch(error => {
-                $('#assessment-form').html('<p>เกิดข้อผิดพลาดในการโหลดแบบสอบถาม: ' + error.message + '</p>');
-                console.error('Error loading questions:', error);
             });
     }
 
