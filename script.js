@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     $('#assessment-form').html('<p>กำลังโหลดแบบสอบถาม...</p>');
     
     // Fetch questions and populate form
