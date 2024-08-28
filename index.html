@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบประเมินธาตุเด่นตามหลักการแพทย์แผนไทย</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1 { color: #333; margin-bottom: 5px; }
+        .subtitle { color: blue; font-size: 0.9em; margin-top: 0; }
+        form { max-width: 600px; margin: 20px auto; }
+        .question { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 10px; }
+        button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        #results { margin-top: 30px; border: 1px solid #ddd; padding: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>แบบประเมินธาตุเด่นตามหลักการแพทย์แผนไทยจากคัมภีร์ธาตุวิวรรณ์</h1>
+    <p class="subtitle">โปรดตอบคำถามตามโดยเลือกตัวเลือกที่ตรงกับพฤติกรรมของท่านมากที่สุด</p>
+    <form id="assessment-form">
+        <!-- Questions will be dynamically inserted here -->
+    </form>
+
+    <div id="results" style="display: none;"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
